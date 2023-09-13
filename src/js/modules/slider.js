@@ -16,8 +16,10 @@ export default class Slider {
 
         Array.from(this.slides).forEach(slide => {
             slide.style.display = "none";
+            // slide.classlist.remove("animated", "slideInDown");
         });
         this.slides[this.slideIndex - 1].style.display = "block";
+        this.slides[this.slideIndex - 1].classList.add("animated", "fadeIn");
     }
 
     plusSlides(n) {
@@ -28,6 +30,12 @@ export default class Slider {
             btn.addEventListener("click", () => {
                 this.plusSlides(1);
             });
+
+            btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.slideIndex = 1;
+                this.showSlides(this.slideIndex)
+            })
         });
 
         this.showSlides(this.slideIndex);
