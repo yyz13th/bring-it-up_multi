@@ -59,11 +59,11 @@ export default class MainSlider extends Slider {
             module.addEventListener("click", (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                this.plusSlides(-1);
+                trigger === '.prevmodule' ? this.plusSlides(-1) : this.plusSlides(1);
             });
         });
     }
-    
+
     render() {
         if(this.container) {
             try {
